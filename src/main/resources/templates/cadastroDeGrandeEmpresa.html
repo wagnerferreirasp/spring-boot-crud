@@ -1,0 +1,44 @@
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Cadastro de Grande Empresa</title>
+    <div th:replace="imports"></div>
+</head>
+<script>
+    $(document).ready(function() {
+        $("#btnCadastrar").click(function() {
+            var empresa = {};
+            empresa.dadosDaEmpresa = getDadosDaEmpresa();
+            $.ajax({
+                "type": "POST",
+                "url": "/cadastraGrandeEmpresa",
+                "data": JSON.stringify(empresa),
+                contentType: 'application/json',
+                success: function(data, textStatus, jqXHR) {
+                    alert(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                    console.log(jqXHR);
+                }
+            });
+        });
+    });
+</script>
+<style>
+    .row {
+        padding: 0px 5px 10px;
+    }
+</style>
+
+<nav th:replace="navbar :: navbar(cadastroDeGrandeEmpresa)"></nav>
+<body class="">
+<div style="text-align: center;" class="h3">Cadastro de Grande Empresa</div>
+<div style="width: 500px"  class="container form-group">
+    <div th:replace="dadosDaEmpresa"></div>
+    <button style="margin: 10px 0px" class="btn btn-lg btn-primary btn-block" id="btnCadastrar">Cadastrar</button>
+</div>
+</body>
+</html>

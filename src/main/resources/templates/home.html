@@ -1,0 +1,18 @@
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Página inicial</title>
+    <div th:replace="imports"></div>
+</head>
+<style>
+    .row {
+        padding: 0px 5px 10px;
+    }
+</style>
+
+<nav th:replace="navbar :: navbar(home)"></nav>
+<body class="text-center">
+<div class="h3" th:text="|Olá, ${usuarioLogado.nome}!|"></div>
+</body>
+</html>

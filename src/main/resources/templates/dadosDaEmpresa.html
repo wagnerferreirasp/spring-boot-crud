@@ -1,0 +1,43 @@
+<script>
+    function getDadosDaEmpresa() {
+        var dadosDaEmpresa = {};
+        dadosDaEmpresa.email = $("[name=email]").val();
+        dadosDaEmpresa.endereco = $("[name=endereco]").val();
+        dadosDaEmpresa.socio = $("[name=socio]").val();
+        dadosDaEmpresa.empresaFoiConstituida = $("[name=foiConstituida]").val();
+        dadosDaEmpresa.descricaoDoNegocio = $("[name=descricaoDoNegocio]").val();
+        dadosDaEmpresa.nome = $("[name=nome]").val();
+        dadosDaEmpresa.nomeDoSocio = $("[name=socio]").val();
+        dadosDaEmpresa.email = $("[name=email]").val();
+        return dadosDaEmpresa;
+    }
+</script>
+<div style="width: 500px" class="container">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome da empresa">
+    </div>
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+        <label for="endereco">Endereço</label>
+        <input type="text" name="endereco" class="form-control" id="endereco" placeholder="Av. Paulista, 9999">
+    </div>
+    <div class="form-group">
+        <label>Sócio</label>
+        <input type="text" name="socio" class="form-control" placeholder="Nome">
+    </div>
+    <div class="form-group">
+        <label for="empresaConstituida">A empresa foi constituída?</label>
+        <select name="foiConstituida" class="form-control" id="empresaConstituida">
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="descricaoDoNegocio">Descrição do negócio</label>
+        <textarea name="descricaoDoNegocio" class="form-control" id="descricaoDoNegocio" rows="3"></textarea>
+    </div>
+</div>

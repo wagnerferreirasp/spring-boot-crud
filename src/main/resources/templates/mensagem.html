@@ -1,0 +1,9 @@
+<div th:if="${warning}">
+    <div th:replace="alert-dismissable :: alert(alert-warning, ${mensagem})"></div>
+</div>
+<div th:if="${error}">
+     <div th:replace="alert-dismissable :: alert(alert-danger, ${mensagem})"></div>
+</div>
+<div th:if="${success}">
+    <div th:replace="alert-dismissable :: alert(alert-success, ${mensagem})"></div>
+</div>

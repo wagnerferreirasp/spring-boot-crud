@@ -1,0 +1,60 @@
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Cadastro de Startup</title>
+    <div th:replace="imports"></div>
+</head>
+<style>
+    .row {
+        padding: 0px 5px 10px;
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        $("#btnCadastrar").click(function() {
+            var empresa = {};
+            empresa.dadosDaEmpresa = getDadosDaEmpresa();
+            empresa.estaBuscandoInvestimento = $("[name=estaBuscandoInvestimento]").val();
+            empresa.idsTiposDeMentores = $("[name=tiposDeMentores]").val();
+            $.ajax({
+                "type": "POST",
+                "url": "/cadastraStartup",
+                "data": JSON.stringify(empresa),
+                contentType: 'application/json',
+                success: function(data, textStatus, jqXHR) {
+                    alert(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    console.log(jqXHR);
+                }
+            });
+        });
+    });
+</script>
+
+<nav th:replace="navbar :: navbar(cadastroDeStartup)"></nav>
+<body class="">
+<div style="text-align: center;" class="h3">Cadastro de Startup</div>
+    <div th:replace="dadosDaEmpresa"></div>
+    <div style="width: 500px"  class="container form-group">
+        <div class="form-group">
+            <label for="estaBuscandoInvestimento">Está buscando investimento?</label>
+            <select name="estaBuscandoInvestimento" class="form-control" id="estaBuscandoInvestimento">
+                <option value="true">Sim</option>
+                <option value="false">Não</option>
+            </select>
+        </div>
+        <label for="tiposDeMentores">Quais os tipos de mentores que você procura?</label>
+        <select class="form-control" id="tiposDeMentores" name="tiposDeMentores" multiple="multiple">
+            <option th:each="tipoDeMentor : ${tiposDeMentores}"
+                    th:value="${{tipoDeMentor}}"
+                    th:text="${tipoDeMentor.nome}">
+            </option>
+        </select>
+        <button style="margin: 10px 0px" class="btn btn-lg btn-primary btn-block" id="btnCadastrar">Cadastrar</button>
+
+    </div>
+</body>
+</html>
